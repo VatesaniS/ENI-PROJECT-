@@ -21,6 +21,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import fr.eni.eniprojectandroid.R;
+import fr.eni.eniprojectandroid.services.VehiculeService;
 
 public class VehiculeActivity extends AppCompatActivity {
 
@@ -42,6 +43,20 @@ public class VehiculeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicule);
+
+
+        editPrix = (EditText) findViewById(R.id.editPrix);
+        editMarque = (EditText) findViewById(R.id.editMarque);
+        editPlaque = (EditText) findViewById(R.id.editPlaque);
+        switchLoue = (Switch) findViewById(R.id.switchLoue);
+
+
+
+        editModele = (EditText) findViewById(R.id.editModele);
+
+       // VehiculeActivity vehiculeActivity = VehiculeService.getVehiculeService(VehiculeActivity.this);
+       // Intent intent = getIntent().getExtras();
+
 
         imgVehicule = (ImageView) findViewById(R.id.imgVehicule);
 
