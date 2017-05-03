@@ -1,4 +1,4 @@
-package fr.eni.eniprojectandroid;
+package fr.eni.eniprojectandroid.controllers;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,9 +12,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
+
+import fr.eni.eniprojectandroid.R;
+import fr.eni.eniprojectandroid.adapter.VehiculeAdapter;
+import fr.eni.eniprojectandroid.services.VehiculeService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ListView VehiculeListView;
+    VehiculeService vehiculeService = VehiculeService.getVehiculeService(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +52,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        VehiculeListView = ((ListView) findViewById(R.id.list_view_vehicules));
+        //TODO Récupérer les voitures enregistrées dans le service.
+      //  VehiculeListView.setAdapter(new VehiculeAdapter(MainActivity.this,R.layout.voiture_adapter,vehiculeService.));
+
+
+
+
     }
 
     @Override
@@ -99,3 +119,4 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 }
+
