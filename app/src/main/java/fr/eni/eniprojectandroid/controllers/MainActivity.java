@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import fr.eni.eniprojectandroid.R;
 
@@ -100,4 +102,13 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+}
+
+class VoitureHolder{
+
+    public TextView nomTextView;
+    public TextView prixTextView;
+    public TextView disponibilité;
+    public ImageView photoImageView;
+
 }
