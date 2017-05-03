@@ -16,12 +16,13 @@ public class Voiture {
     private boolean isLoue;
     private String agenceId;
 
-    public Voiture(String id, String modele, String marque, int prix, String plaque) {
+    public Voiture(String id, String modele, String marque,boolean isLoue, int prix, String plaque) {
         this.id = id;
         this.modele = modele;
         this.marque = marque;
         this.prix = prix;
         this.plaque = plaque;
+        this.isLoue = isLoue;
     }
 
     public String getId() {

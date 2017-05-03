@@ -19,11 +19,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.eni.eniprojectandroid.R;
+import fr.eni.eniprojectandroid.adapter.VehiculeAdapter;
+import fr.eni.eniprojectandroid.services.VehiculeService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView VehiculeListView;
+    VehiculeService vehiculeService = VehiculeService.getVehiculeService(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,11 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         VehiculeListView = ((ListView) findViewById(R.id.list_view_vehicules));
+        //TODO Récupérer les voitures enregistrées dans le service.
+      //  VehiculeListView.setAdapter(new VehiculeAdapter(MainActivity.this,R.layout.voiture_adapter,vehiculeService.));
+
+
+
 
     }
 
