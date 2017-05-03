@@ -44,7 +44,7 @@ public class VehiculeService {
         return _instance;
     }
 
-    private void setLesVoitures(final Context context){
+    private void setLesVoitures(Context context){
         RequestQueue queue = Volley.newRequestQueue(context);
 
         StringRequest stringRequest = new StringRequest("https://locakar-96c1.restdb.io/rest/vehicules?max=20", new Response.Listener<String>() {
@@ -63,6 +63,8 @@ public class VehiculeService {
                 //AVOIR TODO
             }
         });
+
+        queue.add(stringRequest);
     }
 
     private List<Voiture> jsonToVoitures(JSONArray jsonArray) {
@@ -85,10 +87,12 @@ public class VehiculeService {
 
     }
 
+    public List<Voiture> getLesVoitures() {
+        return lesVoitures;
+    }
 
-
-
-
-
+    public void setLesVoitures(List<Voiture> lesVoitures) {
+        this.lesVoitures = lesVoitures;
+    }
 
 }
