@@ -8,3 +8,8 @@
 /captures
 .externalNativeBuild
 .idea/vcs.xml
+.idea/vcs.xml
+app/build.gradle
+app/src/main/AndroidManifest.xml
+app/build.gradle
+app/src/main/AndroidManifest.xml
