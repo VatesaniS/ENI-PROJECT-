@@ -13,12 +13,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.List;
 
 import fr.eni.eniprojectandroid.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ListView VehiculeListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        VehiculeListView = ((ListView) findViewById(R.id.list_view_vehicules));
+
     }
 
     @Override
@@ -104,11 +112,3 @@ public class MainActivity extends AppCompatActivity
     }
 }
 
-class VoitureHolder{
-
-    public TextView nomTextView;
-    public TextView prixTextView;
-    public TextView disponibilité;
-    public ImageView photoImageView;
-
-}

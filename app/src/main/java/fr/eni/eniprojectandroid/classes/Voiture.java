@@ -12,6 +12,7 @@ public class Voiture {
     private int prix;
     private String plaque;
     private String[] urlPhotos;
+    private String urlPhotoPres;
     private boolean isLoue;
     private String agenceId;
 
@@ -85,5 +86,13 @@ public class Voiture {
 
     public void setAgenceId(String agenceId) {
         this.agenceId = agenceId;
+    }
+
+    public String getUrlPhotoPres() {
+        return urlPhotoPres;
+    }
+
+    public void setUrlPhotoPres(String urlPhotoPres) {
+        this.urlPhotoPres = urlPhotoPres;
     }
 }
