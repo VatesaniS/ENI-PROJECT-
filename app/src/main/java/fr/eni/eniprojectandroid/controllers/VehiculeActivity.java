@@ -99,12 +99,24 @@ public class VehiculeActivity extends AppCompatActivity {
             }
 
         }
+        boutonSave = (Button) findViewById(R.id.boutonSave);
+        boutonSave.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
     }
+
+
 
   //  editModele = (EditText) findViewById(R.id.editModele);
   //  editPrix = (EditText) findViewById(R.id.editPrix);
   //  editMarque = (EditText) findViewById(R.id.editMarque);
   //  editPlaque = (EditText) findViewById(R.id.editPlaque);
   //  switchLoue = (Switch) findViewById(R.id.switchLoue);
-  //  boutonSave = (Button) findViewById(R.id.boutonSave);
+
+
 }
