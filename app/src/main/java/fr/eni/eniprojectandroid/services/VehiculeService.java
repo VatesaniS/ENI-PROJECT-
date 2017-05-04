@@ -5,12 +5,10 @@ import android.support.annotation.Nullable;
 
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import fr.eni.eniprojectandroid.classes.Agence;
 import fr.eni.eniprojectandroid.classes.Voiture;
@@ -46,26 +45,22 @@ public class VehiculeService {
     }
 
     private void setLesVoitures(Context context){
-        RequestQueue queue = Volley.newRequestQueue(context);
 
-        StringRequest stringRequest = new StringRequest("https://locakar-96c1.restdb.io/rest/vehicules?max=20", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try{
-                    JSONArray jsonVoitures = new JSONArray(response);
-                    _instance.lesVoitures = jsonToVoitures(jsonVoitures);
-                } catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //AVOIR TODO
-            }
-        });
+        String url = "https://locakar-96c1.restdb.io/rest/vehicules?max=20";
 
-        queue.add(stringRequest);
+        String result;
+
+        HttpGetRequest getRequest = new HttpGetRequest();
+
+        try {
+
+            result = getRequest.execute(url).get();
+            JSONArray jsonVoitures = new JSONArray(result);
+            _instance.lesVoitures = jsonToVoitures(jsonVoitures);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private List<Voiture> jsonToVoitures(JSONArray jsonArray) {

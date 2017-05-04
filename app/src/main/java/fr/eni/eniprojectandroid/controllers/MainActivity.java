@@ -1,8 +1,12 @@
 package fr.eni.eniprojectandroid.controllers;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,6 +29,7 @@ import fr.eni.eniprojectandroid.services.VehiculeService;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private VehiculeService vehiculeService;
 
 
     @Override
@@ -32,8 +37,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         ListView VehiculeListView;
-        VehiculeService vehiculeService = VehiculeService.getVehiculeService(MainActivity.this);
-        
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this,Manifest.permission.INTERNET)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.INTERNET},
+                    2);
+
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -58,12 +69,22 @@ public class MainActivity extends AppCompatActivity
 
         VehiculeListView = ((ListView) findViewById(R.id.list_view_vehicules));
         //TODO Récupérer les voitures enregistrées dans le service.
-       VehiculeListView.setAdapter(new VehiculeAdapter(MainActivity.this,R.layout.voiture_adapter,vehiculeService.getLesVoitures()));
+        vehiculeService = VehiculeService.getVehiculeService(MainActivity.this);
+        VehiculeListView.setAdapter(new VehiculeAdapter(MainActivity.this,R.layout.voiture_adapter,vehiculeService.getLesVoitures()));
 
 
 
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+    }
+
 
     @Override
     public void onBackPressed() {
